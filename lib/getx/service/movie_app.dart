@@ -44,8 +44,8 @@ class MoviewAppService extends GetxService {
     if (rest.value > 0) {
       isLoadBottom(true);
       String value = searchStr.value;
-      int next = page.value + 1;
-      String _url = "s=$value&type=movie&page=$next";
+      page.value = page.value + 1;
+      String _url = "s=$value&type=movie&page=${page.value}";
       String response = await HttpRequest(url: _url).getData();
       HttpResponse data = HttpResponse.fromJson(response);
 

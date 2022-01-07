@@ -43,7 +43,9 @@ class Movie {
     year = json['Year'];
     imdbID = json['imdbID'];
     type = json['Type'];
-    poster = json['Poster'];
+    poster = json['Poster'] != "N/A"
+        ? json['Poster']
+        : "https://wiki.tripwireinteractive.com/images/4/47/Placeholder.png";
   }
 
   Map<String, dynamic> toJson() {

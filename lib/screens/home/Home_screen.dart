@@ -16,27 +16,45 @@ class HomeScreen extends StatelessWidget {
           : SafeArea(
               child: Stack(
                 children: [
-                  SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Container(
-                          padding:
-                              EdgeInsets.only(left: 10, right: 10, top: 70),
-                          child: Wrap(
-                            children: _service.searchResult.value.movies!
-                                .map(
-                                  (movie) => CustomMOvieCard(
-                                    movie: movie,
-                                  ),
-                                )
-                                .toList(),
-                          ),
-                        ),
-                        (_service.isLoadBottom.value)
-                            ? Center(child: CircularProgressIndicator())
-                            : Container(),
-                      ],
-                    ),
+                  Column(
+                    children: [
+                      Expanded(
+                        child: Container(
+                            padding:
+                                EdgeInsets.only(left: 20, right: 20, top: 80),
+                            child: NotificationListener<ScrollNotification>(
+                              onNotification:
+                                  (ScrollNotification notification) {
+                                if (notification.metrics.pixels ==
+                                    notification.metrics.maxScrollExtent) {
+                                  if (_service.isLoadBottom.value) {
+                                    return true;
+                                  }
+                                  _service.loadMore();
+                                }
+                                return true;
+                              },
+                              child: GridView.count(
+                                crossAxisCount: 2,
+                                // shrinkWrap: true,
+                                mainAxisSpacing: 18,
+                                crossAxisSpacing: 18,
+                                childAspectRatio: 0.6,
+                                // padding: EdgeInsets.all(12),
+                                children: _service.searchResult.value.movies!
+                                    .map(
+                                      (movie) => CustomMOvieCard(
+                                        movie: movie,
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
+                            )),
+                      ),
+                      (_service.isLoadBottom.value)
+                          ? Center(child: CircularProgressIndicator())
+                          : Container(),
+                    ],
                   ),
                   Positioned(
                     top: 0,

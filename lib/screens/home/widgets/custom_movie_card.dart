@@ -15,31 +15,12 @@ class CustomMOvieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        width: 170,
-        // color: Colors.white,
-        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
-        child: Column(
-          children: [
-            Container(
-              height: 250,
-              padding: EdgeInsets.all(5),
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-                child: FancyShimmerImage(
-                  imageUrl: movie.poster!,
-                  boxFit: BoxFit.scaleDown,
-                ),
-              ),
-            ),
-            // Container(
-            //   alignment: Alignment.center,
-            //   child: CustomText(
-            //     text: movie.title!,
-            //     color: Colors.black,
-            //     size: 15,
-            //   ),
-            // )
-          ],
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(15)),
+          child: FancyShimmerImage(
+            imageUrl: movie.poster!,
+            boxFit: BoxFit.cover,
+          ),
         ),
       ),
       onTap: () {
