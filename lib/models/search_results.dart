@@ -45,7 +45,7 @@ class Movie {
     type = json['Type'];
     poster = json['Poster'] != "N/A"
         ? json['Poster']
-        : "https://wiki.tripwireinteractive.com/images/4/47/Placeholder.png";
+        : "https://picsum.photos/200/300?random=1";
   }
 
   Map<String, dynamic> toJson() {

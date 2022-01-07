@@ -52,7 +52,12 @@ class HomeScreen extends StatelessWidget {
                             )),
                       ),
                       (_service.isLoadBottom.value)
-                          ? Center(child: CircularProgressIndicator())
+                          ? Container(
+                              padding: EdgeInsets.all(15),
+                              child: Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                            )
                           : Container(),
                     ],
                   ),

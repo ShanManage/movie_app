@@ -68,7 +68,9 @@ class Details {
     language = json['Language'];
     country = json['Country'];
     awards = json['Awards'];
-    poster = json['Poster'];
+    poster = json['Poster'] != "N/A"
+        ? json['Poster']
+        : "https://picsum.photos/id/870/200/300?grayscale&blur=2";
     if (json['Ratings'] != null) {
       ratings = <Ratings>[];
       json['Ratings'].forEach((v) {
