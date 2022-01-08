@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'getx/binding/movie_app_binding.dart';
-import 'screens/home/Home_screen.dart';
-import 'screens/movieDetails/Movie_details_screen.dart';
+import 'screens/home/home_screen.dart';
+import 'screens/movieDetails/movie_details_screen.dart';
 
 class MovieApp extends StatelessWidget {
   const MovieApp({Key? key}) : super(key: key);

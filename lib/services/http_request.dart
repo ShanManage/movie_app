@@ -1,10 +1,6 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
-import 'package:logger/logger.dart';
-import 'package:movie_app/config/api/Api_routes.dart';
-import 'package:movie_app/models/HttpResponse.dart';
-import 'package:movie_app/models/search_results.dart';
+import 'package:movie_app/config/api/api_routes.dart';
+import 'package:movie_app/models/http_response.dart';
 
 class HttpRequest {
   final String url;
@@ -21,13 +17,7 @@ class HttpRequest {
 
     Response response =
         await Dio().get(baseurl + this.url, options: optionlist);
-    // Logger().i(response);
-    Logger().i(response.data);
-    // Logger().i(response.statusCode);
-    // Search searchResult = Search.fromJson(response.data);
-    // Logger().i(searchResult.movies);
 
-    // return jsonEncode(response);
     return HttpResponse(
       responseData: response.data,
       responseCode: response.statusCode,

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/getx/service/movie_app.dart';
 import 'package:movie_app/models/search_results.dart';
-import 'package:movie_app/widgets/text/CustomText.dart';
 
 // ignore: must_be_immutable
 class CustomMOvieCard extends StatelessWidget {

@@ -2,8 +2,8 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/getx/service/movie_app.dart';
-import 'package:movie_app/widgets/icons/CustomIcon.dart';
-import 'package:movie_app/widgets/text/CustomText.dart';
+import 'package:movie_app/widgets/icons/custom_icon.dart';
+import 'package:movie_app/widgets/text/custom_text.dart';
 
 // ignore: must_be_immutable
 class MovieDetailScreen extends StatelessWidget {

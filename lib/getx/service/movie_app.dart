@@ -1,10 +1,8 @@
-import 'dart:convert';
-
 import 'package:get/get.dart';
-import 'package:movie_app/models/HttpResponse.dart';
 import 'package:movie_app/models/details.dart';
+import 'package:movie_app/models/http_response.dart';
 import 'package:movie_app/models/search_results.dart';
-import 'package:movie_app/services/Http_request.dart';
+import 'package:movie_app/services/http_request.dart';
 
 class MoviewAppService extends GetxService {
   RxBool isLoad = false.obs;
