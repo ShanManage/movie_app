@@ -1,7 +1,7 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/getx/service/movie_app.dart';
+import 'package:movie_app/getx/service/movie_app_service.dart';
 import 'package:movie_app/models/search_results.dart';
 
 // ignore: must_be_immutable

@@ -23,6 +23,7 @@ class MoviewAppService extends GetxService {
 
   void fetchMovies(String value) async {
     isLoad(true);
+    isError(false);
     String _url = "s=$value&type=movie";
     String response = await HttpRequest(url: _url).getData();
     HttpResponse data = HttpResponse.fromJson(response);
@@ -32,6 +33,7 @@ class MoviewAppService extends GetxService {
       searchStr.value = value;
       page.value = 1;
       rest.value = int.parse(searchResult.value.totalResults!) - 10;
+      isError(false);
     } else {
       isError(true);
     }

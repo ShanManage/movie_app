@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/getx/service/movie_app.dart';
+import 'package:movie_app/getx/service/movie_app_service.dart';
 import 'package:movie_app/screens/home/widgets/custom_form_field.dart';
 import 'package:movie_app/screens/home/widgets/custom_movie_card.dart';
+import 'package:movie_app/widgets/icons/custom_icon.dart';
+import 'package:movie_app/widgets/text/custom_text.dart';
 
 class HomeScreen extends StatelessWidget {
   final MoviewAppService _service = Get.find<MoviewAppService>();
@@ -18,39 +20,60 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Expanded(
-                        child: Container(
-                            padding:
-                                EdgeInsets.only(left: 20, right: 20, top: 80),
-                            child: NotificationListener<ScrollNotification>(
-                              onNotification:
-                                  (ScrollNotification notification) {
-                                if (notification.metrics.pixels ==
-                                    notification.metrics.maxScrollExtent) {
-                                  if (_service.isLoadBottom.value) {
-                                    return true;
-                                  }
-                                  _service.loadMore();
-                                }
-                                return true;
-                              },
-                              child: GridView.count(
-                                crossAxisCount: 2,
-                                // shrinkWrap: true,
-                                mainAxisSpacing: 18,
-                                crossAxisSpacing: 18,
-                                childAspectRatio: 0.6,
-                                // padding: EdgeInsets.all(12),
-                                children: _service.searchResult.value.movies!
-                                    .map(
-                                      (movie) => CustomMOvieCard(
-                                        movie: movie,
-                                      ),
-                                    )
-                                    .toList(),
+                      (_service.isError.value)
+                          ? Center(
+                              child: Container(
+                                margin: EdgeInsets.only(top: 300),
+                                child: Column(
+                                  children: [
+                                    CustomIcon(icon: Icons.warning, size: 50),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    CustomText(
+                                      text: "Movie not found",
+                                      size: 40,
+                                    ),
+                                  ],
+                                ),
                               ),
-                            )),
-                      ),
+                            )
+                          : Expanded(
+                              child: Container(
+                                  padding: EdgeInsets.only(
+                                      left: 20, right: 20, top: 80),
+                                  child:
+                                      NotificationListener<ScrollNotification>(
+                                    onNotification:
+                                        (ScrollNotification notification) {
+                                      if (notification.metrics.pixels ==
+                                          notification
+                                              .metrics.maxScrollExtent) {
+                                        if (_service.isLoadBottom.value) {
+                                          return true;
+                                        }
+                                        _service.loadMore();
+                                      }
+                                      return true;
+                                    },
+                                    child: GridView.count(
+                                      crossAxisCount: 2,
+                                      // shrinkWrap: true,
+                                      mainAxisSpacing: 18,
+                                      crossAxisSpacing: 18,
+                                      childAspectRatio: 0.6,
+                                      // padding: EdgeInsets.all(12),
+                                      children:
+                                          _service.searchResult.value.movies!
+                                              .map(
+                                                (movie) => CustomMOvieCard(
+                                                  movie: movie,
+                                                ),
+                                              )
+                                              .toList(),
+                                    ),
+                                  )),
+                            ),
                       (_service.isLoadBottom.value)
                           ? Container(
                               padding: EdgeInsets.all(15),
